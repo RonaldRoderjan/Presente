@@ -1,6 +1,8 @@
+console.log("Refúgio Estrelado SCRIPT CARREGADO!");
+
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Seletores de Elementos ---
+     // --- Seletores de Elementos ---
     const entryScreen = document.getElementById('entry-screen');
     const mainScreen = document.getElementById('main-screen');
     const starDustOverlay = document.getElementById('star-dust-overlay');
@@ -51,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000); // 1s = tempo da transição do CSS
     }
 
-    entryScreen.addEventListener('click', startExperience, { once: true });
+    document.addEventListener('click', startExperience, { once: true });
 
 
     // --- 4.3. Lógica dos Modais (Abrir/Fechar) ---
