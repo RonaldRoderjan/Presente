@@ -3,8 +3,6 @@
    Um Presente Digital Imersivo
 ==================================
 
-# Refúgio Estrelado 🌟
-
 Um presente digital interativo e imersivo com tema de galáxia. Este projeto é uma aplicação web de página única (SPA), totalmente front-end, criada como uma experiência pessoal e afetuosa.
 
 O usuário é recebido com uma tela de entrada e, ao tocar, é levado a um "céu" onde pode interagir com diferentes "estrelas". Cada estrela abre um modal com um conteúdo diferente: uma galeria de fotos, uma carta animada, uma lista de qualidades e uma mensagem de áudio final.
@@ -81,3 +79,4 @@ Este projeto foi feito para ser facilmente personalizado. Para alterar o conteú
     * Em `script.js`, edite a variável `suaCarta` dentro do evento de clique de `starWords`. (Lembre-se que `\n` pula uma linha e `^500` é uma pausa de 500ms).
 * **Elogios:**
     * Em `index.html`, dentro de `#modal-compliments`, edite os textos dos `<li>` e o conteúdo de seus atributos `data-description`.
+
