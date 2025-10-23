@@ -1,7 +1,4 @@
-==================================
-      Refúgio Estrelado 🌟
-   Um Presente Digital Imersivo
-==================================
+Refúgio Estrelado 🌟
 
 Um presente digital interativo e imersivo com tema de galáxia. Este projeto é uma aplicação web de página única (SPA), totalmente front-end, criada como uma experiência pessoal e afetuosa.
 
