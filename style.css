@@ -1,3 +1,5 @@
+/* --- Refúgio Estrelado: style.css (VERSÃO CORRIGIDA E SEGURA) --- */
+
 /* --- Configuração Global e Fontes --- */
 :root {
     --font-display: 'Cinzel', serif;
@@ -20,7 +22,7 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Essencial para a experiência de SPA */
+    overflow: hidden; 
     background-color: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-text);
@@ -28,12 +30,11 @@ html, body {
 
 /* --- 4.5. Animações e Fundo Estrelado --- */
 
-/* Fundo de Estrelas Piscando (Simples) */
 #star-background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 200%; /* Maiores para permitir movimento */
+    width: 200%; 
     height: 200%;
     background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="4" height="4" fill="rgba(0,0,10,1)"/><circle cx="1" cy="1" r="0.4" fill="white"/></svg>') repeat;
     background-size: 3px 3px;
@@ -46,18 +47,17 @@ html, body {
     to { transform: translate(-50%, -50%); }
 }
 
-/* Poeira Estelar (Tela de Entrada) */
 #star-dust-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
     background: radial-gradient(ellipse at center, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
     animation: pulse 3s infinite alternate;
-    z-index: 101; /* Acima da tela de entrada */
+    z-index: 101; 
     transition: opacity 1s ease-out;
+    pointer-events: none;
 }
 
 .screen {
@@ -81,6 +81,10 @@ html, body {
     background: linear-gradient(180deg, #0a001a 0%, #00000a 100%);
 }
 
+#entry-screen .content {
+    pointer-events: auto;
+}
+
 .entry-title {
     font-family: var(--font-display);
     font-size: 2.5rem;
@@ -96,11 +100,11 @@ html, body {
     animation: pulse 2s infinite;
 }
 
-/* --- 4.2. Interface Principal --- */
+/* --- 4.2. Interface Principal ("Céu Estrelado") --- */
 #main-screen {
     z-index: 1;
-    opacity: 0; /* Começa escondida */
-    pointer-events: none; /* Desabilitada até ser ativada */
+    opacity: 0; 
+    pointer-events: none;
 }
 
 #main-screen.visible {
@@ -118,66 +122,83 @@ html, body {
 
 .star {
     position: absolute;
-    border-radius: 50%;
-    background-color: var(--color-stars);
+    border-radius: 50%; 
 }
 
 .interactive-star {
-    width: 20px;
-    height: 20px;
-    box-shadow: 0 0 20px 5px var(--color-glow);
+    width: 8px;   
+    height: 8px;  
+    background: radial-gradient(circle at center, 
+        rgba(255, 255, 255, 0.9) 0%,   
+        rgba(255, 255, 255, 0.4) 50%,  
+        rgba(255, 255, 255, 0) 100%    
+    );
+    box-shadow: 0 0 15px 5px rgba(180, 150, 255, 0.6), 
+                0 0 5px 2px rgba(255, 255, 255, 0.8);    
     cursor: pointer;
-    animation: pulse 1.5s infinite alternate;
-    transition: transform 0.3s ease;
+    animation: star-sparkle 2s infinite alternate ease-in-out; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .interactive-star:hover {
-    transform: scale(1.2);
+    transform: scale(1.8); 
+    box-shadow: 0 0 25px 10px rgba(180, 150, 255, 0.8),
+                0 0 10px 4px rgba(255, 255, 255, 1);
 }
 
 .decorative-star {
-    width: 3px;
-    height: 3px;
+    width: 2px;
+    height: 2px;
+    background-color: var(--color-stars); 
     opacity: 0.7;
     animation: glow 3s infinite alternate;
 }
 
-/* --- 4.3. Seções Modais (Genérico) --- */
+/* --- 4.3. Seções Modais (Estilo Refinado) --- */
 .modal {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
     width: 90vw;
     height: 85vh;
-    max-width: 500px;
-    background: var(--color-modal-bg);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
+    max-width: 500px; 
+    
+    background: radial-gradient(ellipse at center, 
+        rgba(25, 10, 45, 0.95), 
+        rgba(10, 0, 30, 0.98)   
+    );
+    
+    border: none; 
+    border-radius: 20px; 
+    
+    box-shadow: 0 0 30px 5px rgba(180, 150, 255, 0.2), 
+                inset 0 0 10px rgba(255, 255, 255, 0.1); 
+
+    backdrop-filter: blur(15px); 
     z-index: 200;
     
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s, transform 0.4s ease;
+    
+    transform: translate(-50%, -45%) scale(0.95); 
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out, visibility 0.4s;
 }
 
 .modal.visible {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1); 
 }
 
 .modal-content {
     padding: 40px 20px 20px 20px;
     height: 100%;
     overflow-y: auto;
-    /* 4.5. Esconder scrollbar */
-    -ms-overflow-style: none;  /* IE e Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 .modal-content::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
 }
 
 .modal-content h3 {
@@ -185,6 +206,7 @@ html, body {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--color-glow);
 }
 
 .close-modal-btn {
@@ -199,48 +221,76 @@ html, body {
     border: none;
     cursor: pointer;
     z-index: 210;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.3s;
+}
+.close-modal-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
 }
 
-/* Blur no fundo ao abrir modal */
 body.modal-open #main-screen {
     filter: blur(5px);
     transition: filter 0.4s ease;
 }
 
-/* --- 4.3.1. Galeria Polaroid --- */
+
+/* --- 4.3.1. Galeria Polaroid (VERSÃO SEGURA E CORRIGIDA) --- */
+
+/* 1. O LAYOUT (Corrigido) */
 .gallery-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+    flex-wrap: wrap; /* Vai quebrar a linha automaticamente */
+    justify-content: center; /* Vai centralizar os cards */
+    gap: 25px; /* Espaço entre os cards */
+    padding: 10px;
 }
+
+/* 2. O VISUAL (Estilo da Referência) */
 .polaroid {
-    width: 250px;
-    background: #fff;
-    padding: 10px 10px 20px 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    width: 250px; /* Largura fixa, muito mais seguro */
+    background: #fefefe; /* Fundo branco do "papel" */
+    padding: 10px 10px 15px 10px; /* Borda da foto (10px) e espaço da legenda (15px) */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Sombra da referência */
     color: #333;
-    transition: transform 0.3s;
-    /* Para o efeito de virar (4.3.1) */
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
     transform-style: preserve-3d;
     cursor: pointer;
+    perspective: 1000px;
+    border-radius: 2px;
 }
-.polaroid:focus { /* Acessibilidade e mobile */
+
+.polaroid:hover {
+    transform: translateY(-8px) scale(1.03) rotate(-1deg);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.polaroid.is-flipped { 
     transform: rotateY(180deg);
 }
+
 .polaroid img {
     width: 100%;
-    height: 220px;
+    height: 230px; /* Altura da foto (para ficar quadrada) */
     object-fit: cover;
+    filter: sepia(0.2) saturate(0.9) contrast(1.1); /* Filtro vintage */
+    backface-visibility: hidden; 
+    display: block;
 }
+
 .polaroid-caption {
     font-family: var(--font-handwriting);
-    font-size: 1.5rem;
+    font-size: 1.3rem; /* Fonte mais fina */
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px; /* Espaço entre a foto e a legenda */
     position: relative;
-    height: 50px; /* Ajuste conforme necessário */
+    height: 40px; /* Altura da área da legenda */
+    transform-style: preserve-3d;
+    color: #333;
+    font-weight: 500;
+    font-style: italic; /* Estilo da referência */
 }
+
 .polaroid-front, .polaroid-back {
     position: absolute;
     width: 100%;
@@ -250,53 +300,81 @@ body.modal-open #main-screen {
     display: flex;
     justify-content: center;
     align-items: center;
-    backface-visibility: hidden; /* Mágica do flip */
+    backface-visibility: hidden; 
+    color: #222;
 }
+
 .polaroid-back {
     transform: rotateY(180deg);
-    font-size: 1rem;
+    font-size: 0.95rem; /* Texto do verso */
     font-family: var(--font-text);
-    padding: 5px;
+    
+    /* Faz o verso cobrir o polaroid inteiro */
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    
+    padding: 15px;
+    background-color: #fefefe; /* Fundo branco no verso também */
+    border-radius: 2px;
+    line-height: 1.4;
+    color: #444;
+    box-sizing: border-box; /* Importante para o padding */
 }
+
 
 /* --- 4.3.2. Nebulosa das Palavras (Carta) --- */
 .letter-container {
     font-family: var(--font-text);
     font-size: 1.1rem;
     line-height: 1.6;
-    white-space: pre-wrap; /* Respeita quebras de linha */
+    white-space: pre-wrap;
 }
 
-/* --- 4.3.3. Cometa dos Elogios --- */
+/* --- 4.3.3. Cometa dos Elogios (Layout Limpo "Pílulas") --- */
 .compliments-layout {
     display: flex;
     flex-direction: column;
-    height: calc(100% - 50px); /* Desconta o H3 */
+    height: calc(100% - 50px);
 }
 .compliments-list {
     list-style: none;
     margin-bottom: 20px;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 50%; 
 }
 .compliments-list li {
     font-family: var(--font-handwriting);
-    font-size: 1.8rem;
-    padding: 10px;
-    margin: 5px 0;
-    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    font-size: 1.9rem; 
+    padding: 8px 15px;
+    margin: 8px 0;
+    border-radius: 20px; 
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: rgba(0, 0, 0, 0.2); 
+    color: rgba(255, 255, 255, 0.7); 
 }
-.compliments-list li.active {
+
+.compliments-list li:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    color: #f0c0ff; /* Destaque */
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.compliments-list li.active {
+    background-color: #f0c0ff; 
+    color: #1a0033; 
+    font-weight: 700;
 }
 #compliment-description-box {
-    flex-grow: 1;
-    background: rgba(0,0,0,0.3);
-    border-radius: 5px;
+    flex-grow: 1; 
+    background: rgba(0,0,0,0.4); 
+    border-radius: 10px;
     padding: 15px;
     font-size: 1rem;
     line-height: 1.5;
+    min-height: 100px;
+    transition: background-color 0.3s;
 }
 
 /* --- 4.3.4. Áudio Final --- */
@@ -311,7 +389,7 @@ body.modal-open #main-screen {
 }
 
 
-/* --- Animações Keyframes --- */
+/* --- Animações Keyframes (Consolidadas) --- */
 @keyframes glow {
     from { text-shadow: 0 0 10px var(--color-glow); }
     to { text-shadow: 0 0 25px var(--color-glow); }
@@ -321,4 +399,22 @@ body.modal-open #main-screen {
     0% { transform: scale(1); opacity: 0.7; }
     50% { transform: scale(1.05); opacity: 1; }
     100% { transform: scale(1); opacity: 0.7; }
+}
+
+@keyframes star-sparkle {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 10px 3px rgba(180, 150, 255, 0.4), 0 0 3px 1px rgba(255, 255, 255, 0.6);
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        box-shadow: 0 0 20px 8px rgba(180, 150, 255, 0.7), 0 0 8px 3px rgba(255, 255, 255, 0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+        box-shadow: 0 0 10px 3px rgba(180, 150, 255, 0.4), 0 0 3px 1px rgba(255, 255, 255, 0.6);
+    }
 }
