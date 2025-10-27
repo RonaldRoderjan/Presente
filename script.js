@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // --- SUBSTITUA COM SUA CARTA ---
-        const suaCarta = `Aninha,^500\n\nDesde o momento em que te conheci... (escreva sua carta aqui).\n\n...^1000 Com todo o meu amor,\nSeu Nome.`;
+        const suaCarta = `Minha gatinha,^500\n\nPARABÉNSSSS!!!!! Chegou o dia mais importante do mundooooo, e eu espero que ele seja maravilhoso do jeitinho que você merece, meu amor! Que você aproveite muitoooo com as pessoas que você ama, que sinta o quanto é amada por todo mundo e o quanto você é especial pra todo mundo. Que você continue sempre sendo essa menininha incrível que ilumina não só a minha vida, mas a de todo mundo que te tem por perto! Aproveita muitooo a sua semana, minha princesa, e esperoooo que tenha gostado dos presentinhos e da nossa jantaaa! EU TE AMOOOOOOOOO MUITOOOOO PRA SEMPRE! FELIZ ANIVERSÁRIO, GATINHA!!! 🎉❤️🎂.\n\n...^1000 Com todo o meu amor,\nSeu gatinho.`;
         // ^500 = pausa de 500ms
         // \n = quebra de linha
 
